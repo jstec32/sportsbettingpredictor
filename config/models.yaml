@@ -1,0 +1,56 @@
+elo:
+  initial_rating: 1500
+  k_factor: 20
+  home_advantage:
+    nfl: 65
+    nba: 100
+  season_regression: 0.33
+  margin_multiplier: 0.04
+
+regression:
+  features:
+    - elo_diff
+    - home_advantage
+    - rest_days_diff
+    - injury_impact
+    - travel_distance
+    - back_to_back
+    - win_streak
+    - ats_streak
+  regularization: 0.1
+  solver: lbfgs
+  max_iter: 1000
+
+gradient_boosting:
+  n_estimators: 300
+  max_depth: 4
+  learning_rate: 0.05
+  subsample: 0.8
+  colsample_bytree: 0.8
+  min_child_weight: 5
+  gamma: 1.0
+  reg_alpha: 0.1
+  reg_lambda: 1.0
+  random_state: 42
+
+ensemble:
+  models:
+    - elo
+    - gradient_boosting
+  weights:
+    elo: 0.35
+    logistic_regression: 0.15
+    gradient_boosting: 0.50
+  min_confidence: 0.55
+
+backtesting:
+  train_window_days: 365
+  test_window_days: 30
+  step_days: 7
+  min_samples: 100
+  metrics:
+    - accuracy
+    - log_loss
+    - brier_score
+    - calibration
+    - roi

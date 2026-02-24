@@ -1,0 +1,46 @@
+bankroll:
+  initial: 10000
+  min_operational: 5000
+  currency: USD
+
+position_sizing:
+  kelly_fraction: 0.25
+  max_bet_pct: 0.05
+  min_bet_pct: 0.01
+  min_edge_threshold: 0.03
+  min_confidence: 0.55
+
+exposure_limits:
+  max_total_exposure: 0.20
+  max_single_game: 0.05
+  max_single_team: 0.10
+  max_daily_bets: 10
+  max_correlated_exposure: 0.10
+
+drawdown_limits:
+  warning_threshold: 0.10
+  reduce_size_threshold: 0.15
+  halt_threshold: 0.20
+  recovery_threshold: 0.10
+
+concentration_limits:
+  max_nfl_exposure: 0.60
+  max_nba_exposure: 0.60
+  max_spread_exposure: 0.50
+  max_moneyline_exposure: 0.50
+  max_totals_exposure: 0.30
+
+timing:
+  min_time_to_close_minutes: 30
+  max_time_to_close_hours: 48
+  blackout_periods:
+    - type: game_start
+      minutes_before: 5
+
+alerts:
+  email_enabled: false
+  slack_enabled: false
+  thresholds:
+    daily_loss_pct: 0.05
+    weekly_loss_pct: 0.10
+    losing_streak: 5

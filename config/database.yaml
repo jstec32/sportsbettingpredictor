@@ -1,0 +1,24 @@
+development:
+  driver: postgresql
+  host: localhost
+  port: 5432
+  database: sports_betting
+  pool_size: 5
+  echo: false
+
+test:
+  driver: postgresql
+  host: localhost
+  port: 5432
+  database: sports_betting_test
+  pool_size: 2
+  echo: false
+
+production:
+  driver: postgresql
+  host: ${DATABASE_HOST}
+  port: ${DATABASE_PORT}
+  database: sports_betting
+  pool_size: 20
+  echo: false
+  ssl_mode: require
