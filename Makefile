@@ -1,4 +1,4 @@
-.PHONY: install dev-install test lint format typecheck clean setup-db verify all sync-schedule capture-odds settle-scores
+.PHONY: install dev-install test lint format typecheck clean setup-db verify all sync-schedule capture-odds settle-scores picks
 
 PYTHON := .venv/bin/python
 PIP    := .venv/bin/pip
@@ -84,6 +84,10 @@ train:
 # Run backtest
 backtest:
 	$(PYTHON) scripts/backtest.py
+
+# Generate daily picks report (today's NBA games vs market odds)
+picks:
+	$(PYTHON) scripts/picks.py
 
 # Scan for opportunities
 scan:
